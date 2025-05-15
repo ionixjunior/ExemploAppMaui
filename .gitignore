@@ -2,3 +2,4 @@
 **/obj
 instalar.sh
 .idea
+.DS_Store
