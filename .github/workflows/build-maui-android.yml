@@ -69,7 +69,7 @@ jobs:
           fetch-depth: 0
 
       - name: MegaLinter
-        uses: megalinter/megalinter-action@v7
+        uses: oxsecurity/megalinter@v7
         env:
           MEGALINTER_FLAVOR: dotnet
           VALIDATE_ALL_CODEBASE: true
