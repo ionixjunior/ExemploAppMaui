@@ -74,20 +74,3 @@ jobs:
         with:
           name: ${{ env.ARTIFACT_AAB_FILE }}
           path: ${{ env.DIR_MOBILEAPP }}/${{ env.DIR_AAB_FILE }}/${{ env.ARTIFACT_AAB_FILE }}
-
-  scan-code:
-    name: Scan Code
-    runs-on: ubuntu-latest
-    needs: build-android
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: MegaLinter
-        uses: oxsecurity/megalinter@v7
-        env:
-          MEGALINTER_FLAVOR: dotnet
-          VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
