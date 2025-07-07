@@ -13,8 +13,25 @@ env:
   ARTIFACT_AAB_FILE: 'net.canal.exemploappmaui.aab'
 
 jobs:
+  scan-code:
+    name: Scan Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: MegaLinter
+        uses: oxsecurity/megalinter@v7
+        env:
+          MEGALINTER_FLAVOR: dotnet
+          VALIDATE_ALL_CODEBASE: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build-android:
     runs-on: macos-latest
+    needs: scan-code
 
     steps:
       - uses: actions/checkout@v4
